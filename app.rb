@@ -3,8 +3,13 @@ require 'sinatra/base'
 
 class MyApp < Sinatra::Base
 
-  get '/' do
-    'Hello world!'
+  post '/' do
+    if params['token'] == 'UaXee3dvTLdumHAeeQJKmkjX'
+      'Hello Men!'
+    else
+      'Who Are You?'
+    end
+
   end
 
 end
