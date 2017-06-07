@@ -4,7 +4,7 @@ require 'sinatra/base'
 class MyApp < Sinatra::Base
 
   post '/' do
-    var = params['body']['challenge']
+    var = params['challenge']
     if params['token'] == 'UaXee3dvTLdumHAeeQJKmkjX'
       var
     else
