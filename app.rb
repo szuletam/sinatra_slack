@@ -4,11 +4,11 @@ require 'sinatra/base'
 class MyApp < Sinatra::Base
 
   post '/' do
-    var = params.inspect
+    var = params['body']['challenge']
     if params['token'] == 'UaXee3dvTLdumHAeeQJKmkjX'
-      var << 'Hello Men!'
+      var
     else
-      var << 'Who Are You?'
+      var
     end
   end
 
