@@ -5,9 +5,9 @@ class MyApp < Sinatra::Base
 
   post '/' do
     if params['token'] == 'UaXee3dvTLdumHAeeQJKmkjX'
-      params.inspect
+      params[:challenge].inspect
     else
-      params.inspect
+      params[:challenge].inspect
     end
   end
 
