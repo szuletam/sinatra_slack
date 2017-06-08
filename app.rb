@@ -4,11 +4,8 @@ require 'sinatra/base'
 class MyApp < Sinatra::Base
 
   post '/' do
-    if params['token'] == 'UaXee3dvTLdumHAeeQJKmkjX'
-      params[:challenge].inspect
-    else
-      params[:challenge].inspect
-    end
+    json = request.body.read
+    json.inspect
   end
 
 end
