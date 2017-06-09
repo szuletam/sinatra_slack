@@ -19,14 +19,22 @@ class MyApp < Sinatra::Base
       auth = client.auth_test
       if auth['ok']
         data = JSON.parse(json)
-        case data['type']
-          when 'channel_created'
-            msg = client.chat_postMessage(channel: data['channel']['id'], text: 'Hello Everyone!!', as_user: false, username: 'ultrabot')
-            'error sending msg' << msg['error'] unless msg['ok']
-          when 'url_verification'
-            data['challenge']
-          else
-            'error data'
+        if data['event']
+          event = data['event']
+          case event['type']
+            when 'channel_created'
+              msg = client.chat_postMessage(channel: event['channel']['id'], text: 'Hello Everyone!!', as_user: false, username: 'ultrabot')
+              'error sending msg' << msg['error'] unless msg['ok']
+            else
+              'error event'
+          end
+        elsif data['type']
+          case data['type']
+            when 'url_verification'
+              data['challenge']
+            else
+              'error data'
+          end
         end
       else
         'auth error' << auth['error']
